@@ -11,17 +11,30 @@ A godot project asset demonstrating an old school "beat-em-up" or brawler genre 
 
 Play as an Orc venturing through the Red Forest as you slaughter the hordes of **ZOMBIE GNOMES**! WHOMP 'em with your trusty mace, or leap into the air and land with a MIGHTY STOMP to deflect hordes of ankle biting undead.
 
+KEEP MOVING! The game constantly scrolls to the right and if you get left behind, you PERISH! DON'T GET *LEFT* BEHIND!!!
+
 # How to Play
 ## Keyboard
 - To start a new game, press the 'N' key. 
 - Move around the screen with W,A,S, and D OR use  arrow keys Up, Down, Left and Right
 - Press SPACE to wield your MACE
 - Press LEFT CTRL to LEAP
+- ENTER to pause the game
+- 'F' or Alt-Enter to toggle FULLSCREEN mode
+- 'Q', Ctrl-Q to QUIT the game
 
 ## Gamepad
 - Left Stick/D-Pad Up, Down, Left and Right to move your character
 - A button (the bottom button on your cross of buttons) to wield your MACE
 - B button (the right button on your cross of buttons) to LEAP
+- Start button to pause the game
+- Click in the left stick (L3 button) to toggle FULLSCREEN
+- Select Button to QUIT the game
+
+## Touchscreen/mobile device
+- Left joystick icon serves as a trackpad. Touch and drag it around to move the Orc in that direction.
+- Right buttons include wield your MACE, LEAP into the air, and PAUSE the game, tap any one of these to execute that action.
+- Touch the ORC'S FACE in the UPPER LEFT of the screen to START the game.
 
 # License
 The MIT License
