@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/GameObjects/GnomeGusher/GnomeGusher.gd" type="Script" id=1]
+
+[node name="GnomeGusher" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Gusher1" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 250
+lifetime = 3.0
+speed_scale = 8.0
+randomness = 0.58
+lifetime_randomness = 0.45
+emission_shape = 1
+emission_sphere_radius = 56.43
+direction = Vector2( -1, -1 )
+spread = 0.0
+initial_velocity = 240.0
+initial_velocity_random = 0.58
+angular_velocity = 541.94
+angular_velocity_random = 0.62
+linear_accel = 100.0
+linear_accel_random = 0.22
+scale_amount = 60.0
+scale_amount_random = 0.27
+color = Color( 0.337255, 0.00392157, 0.341176, 1 )
+hue_variation = 0.06
+hue_variation_random = 0.47
+
+[node name="Gusher2" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 250
+lifetime = 3.0
+speed_scale = 8.0
+randomness = 0.58
+lifetime_randomness = 0.45
+emission_shape = 1
+emission_sphere_radius = 56.43
+direction = Vector2( 1, -1 )
+spread = 0.0
+initial_velocity = 240.0
+initial_velocity_random = 0.58
+angular_velocity = 541.94
+angular_velocity_random = 0.62
+linear_accel = 100.0
+linear_accel_random = 0.22
+scale_amount = 60.0
+scale_amount_random = 0.27
+color = Color( 0.337255, 0.00392157, 0.341176, 1 )
+hue_variation = 0.06
+hue_variation_random = 0.47

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/zombie_shuffle.wav-768f3f85a9449cb47314b0062b6f7124.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/zombie_shuffle.wav"
+dest_files=[ "res://.import/zombie_shuffle.wav-768f3f85a9449cb47314b0062b6f7124.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,872 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Assets/GameObjects/Leaper/leaper_1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/GameObjects/Leaper/Leaper.gd" type="Script" id=2]
+[ext_resource path="res://Assets/GameObjects/EnemyHPBox/EnemyHPBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/GameObjects/ZombieGnome/ZombieGnome_damage_shader.tres" type="Shader" id=4]
+[ext_resource path="res://Assets/GameObjects/GnomeGusher/GnomeGusher.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Sounds/leaper_jump.wav" type="AudioStream" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/pallette_swap_color = Color( 0, 0.843137, 0.905882, 1 )
+shader_param/time = null
+shader_param/hurt_effect_blend = 0.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 3000.0
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 114.254
+height = 156.312
+
+[sub_resource type="Animation" id=4]
+resource_name = "Dead"
+tracks/0/type = "value"
+tracks/0/path = NodePath("LeaperRoot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeaperRoot:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LeaperRoot/leg_2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 172.179, -184.943 ), Vector2( 145.21, -150.482 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LeaperRoot/leg_2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -63.8566, -32.5838 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LeaperRoot/body:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 17.494, -164.705 ), Vector2( 14.4974, -131.742 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("LeaperRoot/body:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -79.2823, -92.274 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("LeaperRoot/leg_1:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 187.201, -50.9374 ), Vector2( 187.201, -50.9374 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("LeaperRoot/leg_1:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -88.0314, -88.0314 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("LeaperRoot/left_arm:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -157.903, -49.2556 ), Vector2( -126.439, -38.7674 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("LeaperRoot/left_arm:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -3.06675, 0.5989 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("LeaperRoot/head:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -153.691, -219.526 ), Vector2( -179.162, -110.15 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("LeaperRoot/head:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -44.7708, -100.496 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("LeaperRoot/right_arm:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53.4627, -259.972 ), Vector2( 53.4627, -259.972 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("LeaperRoot/right_arm:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("CollisionShape2D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -154.049 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("CollisionShape2D:rotation_degrees")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0002 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("HitDetector/CollisionShape2D2:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.49835, -155.635 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("HitDetector/CollisionShape2D2:rotation_degrees")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0002 ]
+}
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath("LeaperRoot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeaperRoot:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LeaperRoot/leg_2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 172.179, -184.943 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LeaperRoot/leg_2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -63.8566 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LeaperRoot/body:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 17.494, -164.705 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("LeaperRoot/body:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -79.2823 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("LeaperRoot/leg_1:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 187.201, -50.9374 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("LeaperRoot/leg_1:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -88.0314 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("LeaperRoot/left_arm:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -157.903, -49.2556 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("LeaperRoot/left_arm:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -3.06675 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("LeaperRoot/head:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -153.691, -219.526 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("LeaperRoot/head:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -44.7708 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("LeaperRoot/right_arm:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 53.4627, -259.972 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("LeaperRoot/right_arm:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("CollisionShape2D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -154.049 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("CollisionShape2D:rotation_degrees")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0002 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("HitDetector/CollisionShape2D2:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.49835, -155.635 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("HitDetector/CollisionShape2D2:rotation_degrees")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0002 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("LeaperRoot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 0.9, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 2.9967, -743.16 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeaperRoot:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LeaperRoot/leg_2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 172.179, -184.943 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LeaperRoot/leg_2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -63.8566 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LeaperRoot/body:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 17.494, -164.705 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("LeaperRoot/body:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -79.2823 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("LeaperRoot/leg_1:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 187.201, -50.9374 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("LeaperRoot/leg_1:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -88.0314 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("LeaperRoot/left_arm:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -157.903, -49.2556 ), Vector2( -102.466, -32.8766 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("LeaperRoot/left_arm:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -3.06675, -66.274 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("LeaperRoot/head:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -153.691, -219.526 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("LeaperRoot/head:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -44.7708, -44.7708, -48.0, -40.0, -48.0, -40.0, -48.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("LeaperRoot/right_arm:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.9, 1.1, 1.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53.4627, -259.972 ), Vector2( 20.4627, -301.972 ), Vector2( 16.4627, -282.972 ), Vector2( 20.4627, -301.972 ), Vector2( 16.4627, -282.972 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("LeaperRoot/right_arm:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.9, 1.1, 1.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -56.2291, -11.7705, -56.2291, -11.7705 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("CollisionShape2D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.7, 0.9, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -154.049 ), Vector2( 0, -154.049 ), Vector2( 2.9967, -897.209 ), Vector2( 0, -154.049 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("CollisionShape2D:rotation_degrees")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 90.0002, 90.0002, 90.0002 ]
+}
+tracks/16/type = "method"
+tracks/16/path = NodePath(".")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "move_forward"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("LeaperRoot/AttackArea/AttackShape:disabled")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("HitDetector/CollisionShape2D2:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.7, 0.9, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.49835, -155.635 ), Vector2( 1.49835, -155.635 ), Vector2( 2.997, -897.209 ), Vector2( 2.997, -154.049 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("HitDetector/CollisionShape2D2:rotation_degrees")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0002 ]
+}
+tracks/20/type = "audio"
+tracks/20/path = NodePath("AudioStreamPlayer")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( 0.7 )
+}
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 175.036
+height = 262.673
+
+[node name="Leaper" type="KinematicBody2D"]
+position = Vector2( -3.36359, 0 )
+collision_layer = 2
+collision_mask = 2147483649
+script = ExtResource( 2 )
+
+[node name="LeaperRoot" type="Node2D" parent="."]
+material = SubResource( 1 )
+
+[node name="left_arm" type="Sprite" parent="LeaperRoot"]
+use_parent_material = true
+position = Vector2( -102.466, -32.8766 )
+rotation = -1.1567
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 580, 220, 102 )
+
+[node name="right_arm" type="Sprite" parent="LeaperRoot"]
+use_parent_material = true
+position = Vector2( 27.796, -292.639 )
+rotation = -0.763298
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 682, 640, 211, 104 )
+
+[node name="leg_1" type="Sprite" parent="LeaperRoot"]
+use_parent_material = true
+position = Vector2( 187.201, -50.9374 )
+rotation = -1.53644
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 124, 882, 173, 198 )
+
+[node name="leg_2" type="Sprite" parent="LeaperRoot"]
+use_parent_material = true
+position = Vector2( 172.179, -184.943 )
+rotation = -1.11451
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 518, 908, 115, 140 )
+
+[node name="body" type="Sprite" parent="LeaperRoot"]
+use_parent_material = true
+position = Vector2( 17.494, -164.705 )
+rotation = -1.38374
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 322, 566, 275, 213 )
+
+[node name="GnomeGusher" parent="LeaperRoot" instance=ExtResource( 5 )]
+position = Vector2( -124.359, -199.275 )
+rotation = 0.785398
+
+[node name="head" type="Sprite" parent="LeaperRoot"]
+use_parent_material = true
+position = Vector2( -153.691, -219.526 )
+rotation = -0.837758
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 313, 0, 264, 431 )
+
+[node name="MouthParts" type="Node2D" parent="LeaperRoot/head"]
+position = Vector2( -7.94807, 10.1226 )
+
+[node name="Mouth1" type="Sprite" parent="LeaperRoot/head/MouthParts"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 83, 212, 58, 33 )
+
+[node name="Mouth3" type="Sprite" parent="LeaperRoot/head/MouthParts"]
+position = Vector2( 1.74234, 15.1293 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 78, 269, 67, 25 )
+
+[node name="Mouth2" type="Sprite" parent="LeaperRoot/head/MouthParts"]
+position = Vector2( -0.0168228, -4.20441 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 153, 66, 41 )
+
+[node name="PerceptualRadius" type="Area2D" parent="LeaperRoot"]
+visible = false
+position = Vector2( -624.334, -181.949 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeaperRoot/PerceptualRadius"]
+position = Vector2( -2583.65, -36.6786 )
+shape = SubResource( 2 )
+
+[node name="AttackArea" type="Area2D" parent="LeaperRoot"]
+visible = false
+collision_layer = 2
+
+[node name="AttackShape" type="CollisionShape2D" parent="LeaperRoot/AttackArea"]
+position = Vector2( -196.253, -141.674 )
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Dead = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Leap = SubResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, -154.049 )
+rotation = 1.5708
+shape = SubResource( 7 )
+
+[node name="LeapTimer" type="Timer" parent="."]
+wait_time = 1.6
+
+[node name="AttackCooldown" type="Timer" parent="."]
+
+[node name="HitDetector" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitDetector"]
+position = Vector2( 1.49835, -155.635 )
+rotation = 1.5708
+shape = SubResource( 7 )
+
+[node name="HPBar" parent="." instance=ExtResource( 3 )]
+margin_left = -331.697
+margin_top = -984.445
+margin_right = 334.303
+margin_bottom = -842.445
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="CleanupTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -17.931
+[connection signal="body_entered" from="LeaperRoot/PerceptualRadius" to="." method="_on_PerceptualRadius_body_entered"]
+[connection signal="body_entered" from="LeaperRoot/AttackArea" to="." method="_on_AttackArea_body_entered"]
+[connection signal="timeout" from="LeapTimer" to="." method="_on_LeapTimer_timeout"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_AttackCooldown_timeout"]
+[connection signal="area_entered" from="HitDetector" to="." method="_on_HitDetector_area_entered"]
+[connection signal="timeout" from="FlashTimer" to="." method="_on_FlashTimer_timeout"]
+[connection signal="timeout" from="CleanupTimer" to="." method="queue_free"]

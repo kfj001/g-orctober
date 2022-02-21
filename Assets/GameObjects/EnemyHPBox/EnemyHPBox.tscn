@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/GameObjects/ZombieGnome/value.png" type="Texture" id=1]
+[ext_resource path="res://Assets/GameObjects/ZombieGnome/back.png" type="Texture" id=2]
+[ext_resource path="res://Assets/GameObjects/ZombieGnome/frame_back.png" type="Texture" id=3]
+[ext_resource path="res://Assets/GameObjects/ZombieGnome/border.png" type="Texture" id=4]
+[ext_resource path="res://Assets/GameObjects/EnemyHPBox/EnemyHPBox.gd" type="Script" id=5]
+
+[node name="TextureRect" type="TextureRect"]
+margin_left = -294.562
+margin_top = -831.814
+margin_right = 371.438
+margin_bottom = -689.814
+texture = ExtResource( 3 )
+expand = true
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -64.0
+margin_right = 320.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="MarginContainer"]
+margin_right = 640.0
+margin_bottom = 128.0
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 4 )
+texture_progress = ExtResource( 1 )

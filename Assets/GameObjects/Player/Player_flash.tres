@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float flash_modifier:hint_range(0.0,1.0)=0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	vec4 offset = vec4(color);
+	offset.r = 1.0;
+	offset.g = 1.0;
+	offset.b = 1.0;
+	COLOR =  mix(color, offset, flash_modifier);
+}"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/flash_modifier = 0.0

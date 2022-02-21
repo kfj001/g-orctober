@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/GameObjects/PlayerUI/TouchControls/TouchControls.gd" type="Script" id=1]
+[ext_resource path="res://Assets/GameObjects/PlayerUI/TouchControls/arrow.png" type="Texture" id=2]
+[ext_resource path="res://Assets/GameObjects/PlayerUI/mace_button.png" type="Texture" id=3]
+[ext_resource path="res://Assets/GameObjects/Joystick/joystick.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/GameObjects/PlayerUI/TouchControls/jump_button.png" type="Texture" id=5]
+[ext_resource path="res://Assets/GameObjects/PlayerUI/pause_button.png" type="Texture" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 500.0
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 300.0
+height = 400.0
+
+[node name="TouchControls" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftButton" type="TouchScreenButton" parent="."]
+visible = false
+position = Vector2( 30, 900 )
+rotation = -1.5708
+scale = Vector2( 0.6, 0.6 )
+normal = ExtResource( 2 )
+shape = SubResource( 1 )
+action = "move_left"
+visibility_mode = 1
+
+[node name="RightButton" type="TouchScreenButton" parent="."]
+visible = false
+position = Vector2( 480, 750 )
+rotation = 1.5708
+scale = Vector2( 0.6, 0.6 )
+normal = ExtResource( 2 )
+shape = SubResource( 1 )
+action = "move_right"
+visibility_mode = 1
+
+[node name="DownButton" type="TouchScreenButton" parent="."]
+visible = false
+position = Vector2( 330, 1050 )
+rotation = -3.14159
+scale = Vector2( 0.6, 0.6 )
+normal = ExtResource( 2 )
+shape = SubResource( 1 )
+action = "move_down"
+visibility_mode = 1
+
+[node name="UpButton" type="TouchScreenButton" parent="."]
+visible = false
+position = Vector2( 180, 600 )
+scale = Vector2( 0.6, 0.6 )
+normal = ExtResource( 2 )
+shape = SubResource( 1 )
+action = "move_up"
+visibility_mode = 1
+
+[node name="MaceButton" type="TouchScreenButton" parent="."]
+position = Vector2( 1740, 870 )
+scale = Vector2( 0.158562, 0.158562 )
+normal = ExtResource( 3 )
+shape = SubResource( 2 )
+action = "attack"
+visibility_mode = 1
+
+[node name="JumpButton" type="TouchScreenButton" parent="."]
+position = Vector2( 1740, 660 )
+scale = Vector2( 0.158562, 0.158562 )
+normal = ExtResource( 5 )
+shape = SubResource( 2 )
+action = "jump_attack"
+visibility_mode = 1
+
+[node name="PauseButton" type="TouchScreenButton" parent="."]
+pause_mode = 2
+position = Vector2( 1710, 480 )
+scale = Vector2( 0.158562, 0.158562 )
+normal = ExtResource( 6 )
+shape = SubResource( 3 )
+action = "pause"
+visibility_mode = 1
+
+[node name="joystick_outer_ring" parent="." instance=ExtResource( 4 )]
+position = Vector2( 180, 900 )
