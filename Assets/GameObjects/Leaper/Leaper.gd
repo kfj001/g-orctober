@@ -1,5 +1,9 @@
 extends EnemyBase
 
+"""
+Game logic for The Leaper - one of the Zombie gnome enemies in this game.
+"""
+
 onready var _hit_shader:ShaderMaterial = $LeaperRoot.material
 onready var _flash_timer:Timer = $FlashTimer
 onready var _gusher:GnomeGusher = $LeaperRoot/GnomeGusher

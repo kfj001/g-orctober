@@ -1,5 +1,10 @@
 extends Node2D
 
+"""
+This object 'sweeps' right, behind the player and sits just off screen.
+If the player strikes this object during play, the player dies immediately.
+This object is intended to keep the player moving to the right, or die.
+"""
 class_name RightMover
 
 export(int, 20, 150) var move_rate:int=200

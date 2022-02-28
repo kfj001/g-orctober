@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/GameObjects/PlayerSpawner/PlayerSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/GameObjects/PlayerUI/PlayerUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/GameObjects/PlayerUI/TouchControls/TouchControls.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/RIghtMover.gd" type="Script" id=7]
+[ext_resource path="res://src/RightMover.gd" type="Script" id=7]
 [ext_resource path="res://Assets/GameObjects/GnomeMaker/GnomeMaker.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/GameObjects/GetMoving/GetMoving.tscn" type="PackedScene" id=10]
 

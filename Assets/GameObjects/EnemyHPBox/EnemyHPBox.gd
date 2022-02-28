@@ -1,5 +1,8 @@
 extends TextureRect
 
+"""
+Visual element showing the enemies remaining hitpoints.
+"""
 class_name EnemyHPBox
 
 export (int, 0,100) var value:int = 0 setget set_value

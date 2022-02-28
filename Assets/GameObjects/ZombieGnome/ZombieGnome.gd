@@ -1,5 +1,9 @@
 extends EnemyBase
 
+"""
+Game logic for the 'shuffler' - another one of the Zombie gnome enemies.
+"""
+
 onready var _animation_player = $AnimationPlayer
 onready var _gnome_host = $Gnome
 onready var _perceptual_collider = $Gnome/PerceptualRadius/CollisionShape2D
