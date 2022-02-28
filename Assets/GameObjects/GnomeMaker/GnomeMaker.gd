@@ -1,5 +1,11 @@
 extends Node2D
 
+"""
+Spawns one of two parameterized game objects at random. Will continue to spawn
+enemies until the max_spawnlings are hit. Tracks spawns/kills using 
+lifecycle events
+"""
+
 onready var _spawn_area_shape:CollisionShape2D = $SpawnArea/CollisionShape2D
 export (PackedScene) var enemy1
 export (PackedScene) var enemy2

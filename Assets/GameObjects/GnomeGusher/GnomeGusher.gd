@@ -1,5 +1,9 @@
 extends Node2D
 
+"""
+Visual element that shows 'gushing' blood from struck enemies. 
+Uses CPU particles.
+"""
 class_name GnomeGusher
 
 func start():

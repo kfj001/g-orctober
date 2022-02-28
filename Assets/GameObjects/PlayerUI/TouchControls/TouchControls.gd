@@ -1,5 +1,9 @@
 extends Control
 
+"""
+Logic class mapping on-screen controls to game input actions.
+"""
+
 func _on_UpButton_button_down():
 	Input.action_press("move_up")
 

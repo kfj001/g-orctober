@@ -1,5 +1,10 @@
 extends Sprite
 
+"""
+This object provides the logic that drives the on-screen joystick. It maps
+the motion of the 'stick' on screen to up, down, left and right axis movement.
+"""
+
 const _deadzone:int = 50
 onready var size = texture.get_size() * global_scale
 var _is_dragging:bool = false

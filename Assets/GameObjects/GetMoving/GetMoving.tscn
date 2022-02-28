@@ -323,4 +323,5 @@ wait_time = 3.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -13.149
+
 [connection signal="timeout" from="AutohideTimer" to="." method="_on_AutohideTimer_timeout"]

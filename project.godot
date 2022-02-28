@@ -52,7 +52,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "RightMover",
 "language": "GDScript",
-"path": "res://src/RIghtMover.gd"
+"path": "res://src/RightMover.gd"
 } ]
 _global_script_class_icons={
 "EnemyBase": "",

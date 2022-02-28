@@ -1,5 +1,8 @@
 extends TextureRect
 
+"""
+Visual indickator element, reminding the user to "continue moving" to the right.
+"""
 class_name GetMoving
 
 var _time = 0.0

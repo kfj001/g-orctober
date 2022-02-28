@@ -1,9 +1,13 @@
 extends Node
 
+"""
+Global input handler and global variable storage. Game-wide events are managed
+and fired off from here. Events such as pausing, kickoff of a new game, pausing
+and gameplay lifecycle events live in this global file.
+"""
+
 onready var _player_spawner:PlayerSpawner = get_node("/root").find_node("PlayerSpawner", true, false)
 
-enum AnimationMode {REAL, TOON}
-export var anim_mode:int setget set_anim_mode
 export var player_health:int setget set_player_health
 export var max_player_health:int = 100
 export var player_score:int = 0 setget set_player_score
@@ -11,7 +15,6 @@ export var player_score:int = 0 setget set_player_score
 export var player_lives:int setget set_player_lives
 var _player_ref:Player
 
-signal AnimationChanged
 signal HealthChanged
 signal PlayerHurt
 signal ScoreChange
@@ -52,11 +55,6 @@ func _unhandled_input(event:InputEvent):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	elif event.is_action_pressed("exit"):
 		_quit_game()
-	elif Input.is_key_pressed(KEY_T):
-		if anim_mode == AnimationMode.TOON:
-			self.anim_mode = AnimationMode.REAL
-		else:
-			self.anim_mode = AnimationMode.TOON		
 	elif get_tree().paused == false and event.is_action_pressed("pause"):
 		get_tree().paused = true
 		emit_signal("PauseSounded")
@@ -70,10 +68,6 @@ func _quit_game():
 	if _player_ref != null:
 		_player_ref.disconnect("tree_exited", self, "_on_spawn_new_player_for_life")
 	get_tree().quit(0)
-
-func set_anim_mode(value:int):
-	anim_mode = value
-	emit_signal("AnimationChanged")
 
 func set_player_health(value:int):
 	if player_health != value:

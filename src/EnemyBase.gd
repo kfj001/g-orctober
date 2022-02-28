@@ -1,4 +1,10 @@
 extends KinematicBody2D
+
+"""
+Base class for enemies and their logic. Handles minimally shared behavior 
+between enemy types such as lifecycle management and handling 'blowback' - the 
+stun-locking effect of an enemy after being struck.
+"""
 class_name EnemyBase
 
 onready var tween:Tween = Tween.new()

@@ -25,4 +25,5 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
 shape = SubResource( 1 )
+
 [connection signal="timeout" from="GnomeTImer" to="." method="_on_GnomeTImer_timeout"]

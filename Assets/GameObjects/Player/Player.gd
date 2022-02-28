@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+"""
+Represents the player's logic. Handles input and hitbox tracking.
+"""
 class_name Player
 
 export var horizontal_movement_speed:=250
@@ -30,8 +33,6 @@ func _ready():
 	_camera = get_tree().current_scene.find_node("PlayerCamera")
 	_current_state = PlayerStates.NORMAL
 	_current_visual_state = VisualStates.FACING_RIGHT
-# warning-ignore:return_value_discarded
-	Global.connect("AnimationChanged", self, "_on_animation_changed")
 # warning-ignore:return_value_discarded
 	Global.connect("PlayerHurt", self, "_on_player_hurt")
 
@@ -111,16 +112,6 @@ func _move_right(delta):
 	
 func _can_move_right()->bool:
 	return true
-
-func _on_animation_changed():
-	if Global.anim_mode == Global.AnimationMode.REAL:
-		idle_to_use="idle"
-		walk_to_use="walk"
-		attack_to_use="attack"
-	else:
-		idle_to_use="idle_chipped"
-		walk_to_use="walk_chipped"
-		attack_to_use="attack_chipped"
 
 func _handle_attack():
 	_current_state=PlayerStates.ATTACKING
