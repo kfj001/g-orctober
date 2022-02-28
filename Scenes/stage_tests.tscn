@@ -140,8 +140,6 @@ scale = Vector2( 0.2, 0.2 )
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 401.229, 968.781 )
 scale = Vector2( 0.5, 0.5 )
-horizontal_movement_speed = 250
-vertical_movement_speed = 150
 
 [node name="PlayerCamera" parent="YSort/Player" instance=ExtResource( 3 )]
 position = Vector2( 3.77551, -700 )

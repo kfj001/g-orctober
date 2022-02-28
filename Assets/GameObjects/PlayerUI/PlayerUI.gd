@@ -1,7 +1,6 @@
 extends Control
 
 onready var _progress_bar = $TextureRect/GridContainer/hpProgress
-onready var _kcp_bar = $TextureRect/GridContainer/kcpProgress
 onready var _score = $TextureRect/GridContainer/scoreLabel2
 onready var _lives = $TextureRect/Face/LivesLabel
 
@@ -16,7 +15,6 @@ func _ready():
 # warning-ignore:return_value_discarded
 	Global.connect("LivesChanged", self, "_on_player_lives_changed")
 	_set_lives_to(Global.player_lives)
-	_kcp_bar.value = 0
 	_score.text = str(Global.player_score)
 	
 	

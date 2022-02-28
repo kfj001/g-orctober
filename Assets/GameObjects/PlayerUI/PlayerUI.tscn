@@ -52,14 +52,15 @@ __meta__ = {
 }
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="TextureRect"]
+position = Vector2( 15, 15 )
 shape = SubResource( 1 )
 action = "new_game"
 
 [node name="GridContainer" type="GridContainer" parent="TextureRect"]
 margin_left = 174.938
 margin_top = 21.3471
-margin_right = 927.938
-margin_bottom = 217.347
+margin_right = 955.938
+margin_bottom = 167.347
 rect_scale = Vector2( 0.688568, 0.688568 )
 size_flags_vertical = 0
 columns = 2
@@ -68,44 +69,30 @@ __meta__ = {
 }
 
 [node name="hplabel" type="Label" parent="TextureRect/GridContainer"]
-margin_top = 2.0
-margin_right = 149.0
-margin_bottom = 62.0
+margin_right = 177.0
+margin_bottom = 71.0
 text = "HP:"
 align = 2
 valign = 1
 
 [node name="hpProgress" parent="TextureRect/GridContainer" instance=ExtResource( 1 )]
-margin_left = 153.0
-margin_right = 753.0
-
-[node name="kcpLabel" type="Label" parent="TextureRect/GridContainer"]
-margin_top = 70.0
-margin_right = 149.0
-margin_bottom = 130.0
-text = "kCP:"
-align = 2
-valign = 1
-
-[node name="kcpProgress" parent="TextureRect/GridContainer" instance=ExtResource( 1 )]
-margin_left = 153.0
-margin_top = 68.0
-margin_right = 753.0
-margin_bottom = 132.0
+margin_left = 181.0
+margin_right = 781.0
+margin_bottom = 71.0
 
 [node name="scoreLabel" type="Label" parent="TextureRect/GridContainer"]
-margin_top = 136.0
-margin_right = 149.0
-margin_bottom = 196.0
+margin_top = 75.0
+margin_right = 177.0
+margin_bottom = 146.0
 text = "Score:"
 align = 2
 valign = 1
 
 [node name="scoreLabel2" type="Label" parent="TextureRect/GridContainer"]
-margin_left = 153.0
-margin_top = 136.0
-margin_right = 753.0
-margin_bottom = 196.0
+margin_left = 181.0
+margin_top = 75.0
+margin_right = 781.0
+margin_bottom = 146.0
 text = "1,234,567"
 valign = 1
 max_lines_visible = 1
