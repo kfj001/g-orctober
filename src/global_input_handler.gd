@@ -14,12 +14,15 @@ export var player_score:int = 0 setget set_player_score
 
 export var player_lives:int setget set_player_lives
 var _player_ref:Player
+var _playing:bool
 
 signal HealthChanged
 signal PlayerHurt
 signal ScoreChange
 signal PauseSounded
 signal LivesChanged
+signal GameStarted
+signal GameEnded
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
@@ -28,6 +31,9 @@ func do_newgame_init():
 	self.player_score = 0
 	self.player_lives = 2
 	do_newplayer_init()
+	#Finally send the game started event
+	_playing = true
+	emit_signal("GameStarted")
 	
 func do_newplayer_init():
 	self.player_health = max_player_health
@@ -55,10 +61,10 @@ func _unhandled_input(event:InputEvent):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	elif event.is_action_pressed("exit"):
 		_quit_game()
-	elif get_tree().paused == false and event.is_action_pressed("pause"):
+	elif _is_playing() and !get_paused_status() and event.is_action_pressed("pause"):
 		get_tree().paused = true
 		emit_signal("PauseSounded")
-	elif get_tree().paused and event.is_action_pressed("pause"):
+	elif _is_playing() and get_paused_status() and event.is_action_pressed("pause"):
 		get_tree().paused = false
 		emit_signal("PauseSounded")
 	elif Input.is_action_just_pressed("new_game") and get_node("/root").find_node("Player", true, false) == null:
@@ -76,6 +82,11 @@ func set_player_health(value:int):
 			emit_signal("PlayerHurt", value)
 		player_health = value
 		emit_signal("HealthChanged", value)
+	if player_health <= 0 and player_lives <= 0:
+		#Game over.
+		if _is_playing():
+			_playing = false
+			emit_signal("GameEnded")
 
 func set_player_score(value:int):
 	player_score = value
@@ -84,3 +95,9 @@ func set_player_score(value:int):
 func set_player_lives(value:int):
 	player_lives = value
 	emit_signal("LivesChanged", value)
+
+func get_paused_status()->bool:
+	return get_tree().paused
+
+func _is_playing()->bool:
+	return _playing

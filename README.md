@@ -19,11 +19,12 @@ KEEP MOVING! The game constantly scrolls to the right and if you get left behind
 - Move around the screen with W,A,S, and D OR use  arrow keys Up, Down, Left and Right
 - Press SPACE to wield your MACE
 - Press LEFT CTRL to LEAP
-- ENTER to pause the game
+- P to pause the game
 - 'F' or Alt-Enter to toggle FULLSCREEN mode
 - 'Q', Ctrl-Q to QUIT the game
 
 ## Gamepad
+- To start a new game, click the RIGHT stick
 - Left Stick/D-Pad Up, Down, Left and Right to move your character
 - A button (the bottom button on your cross of buttons) to wield your MACE
 - B button (the right button on your cross of buttons) to LEAP
