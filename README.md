@@ -24,6 +24,7 @@ KEEP MOVING! The game constantly scrolls to the right and if you get left behind
 - 'Q', Ctrl-Q to QUIT the game
 
 ## Gamepad
+- To start a new game, click the RIGHT stick
 - Left Stick/D-Pad Up, Down, Left and Right to move your character
 - A button (the bottom button on your cross of buttons) to wield your MACE
 - B button (the right button on your cross of buttons) to LEAP
