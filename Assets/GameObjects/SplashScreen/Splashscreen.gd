@@ -1,9 +1,9 @@
-extends TextureRect
+extends Control
 
 func _ready():
 	fade_in()
-	Global.connect("GameStarted", self, "_on_game_start")
-	Global.connect("GameEnded", self, "_on_game_ended")
+	Global.connect("GameStarted", _on_game_start.bind())
+	Global.connect("GameEnded", _on_game_ended.bind())
 
 func fade_out():
 	$AnimationPlayer.play("fade_out")

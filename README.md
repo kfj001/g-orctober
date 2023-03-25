@@ -1,5 +1,8 @@
 *reading the readme, how provocative...*
 
+# Godot 4
+This project is now being updated for Godot 4! Was it worth waiting for? Oh yeah definietly. 
+
 A godot project asset demonstrating an old school "beat-em-up" or brawler genre game ala *Altered Beast*, or *Golden Axe*. G-orctober features:
 
 - Vibrant 2D graphics made in *Inkscape*

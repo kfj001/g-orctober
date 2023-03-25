@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds80a01an8gxw"
-path="res://.godot/imported/leaper_1.png-37d7499446ecb7ba683b4026445de258.ctex"
+uid="uid://be1liwggvoqp3"
+path="res://.godot/imported/screenshot_2_thumb.png-35f4fadd9fde870959544e2795fa5c11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GameObjects/Leaper/leaper_1.png"
-dest_files=["res://.godot/imported/leaper_1.png-37d7499446ecb7ba683b4026445de258.ctex"]
+source_file="res://screenshots/screenshot_2_thumb.png"
+dest_files=["res://.godot/imported/screenshot_2_thumb.png-35f4fadd9fde870959544e2795fa5c11.ctex"]
 
 [params]
 

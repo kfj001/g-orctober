@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 """
 Base class for enemies and their logic. Handles minimally shared behavior 
@@ -7,12 +7,11 @@ stun-locking effect of an enemy after being struck.
 """
 class_name EnemyBase
 
-onready var tween:Tween = Tween.new()
+@onready var tween:Tween = Tween.new()
 
 func _ready():
-	add_child(tween)
 # warning-ignore:return_value_discarded
-	get_tree().connect("node_removed", self, "_on_node_removed")
+	get_tree().connect("node_removed", _on_node_removed.bind())
 	
 func _on_node_removed(_node:Node):
 	pass

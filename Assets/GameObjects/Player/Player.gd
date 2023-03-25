@@ -1,12 +1,12 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 """
 Represents the player's logic. Handles input and hitbox tracking.
 """
 class_name Player
 
-export var horizontal_movement_speed:=250
-export var vertical_movement_speed:=150
+@export var horizontal_movement_speed:=250
+@export var vertical_movement_speed:=150
 
 enum PlayerStates {NORMAL, STUN_LOCKED, ATTACKING, JUMP_ATTACKING}
 enum VisualStates {FACING_LEFT, FACING_RIGHT}
@@ -14,9 +14,9 @@ enum VisualStates {FACING_LEFT, FACING_RIGHT}
 signal TooLeft
 signal DoneDieing
 
-onready var _orc_sprite = $Orc
-onready var _orc_collider = $CollisionShape2D
-onready var _animation_player =$AnimationPlayer
+@onready var _orc_sprite = $Orc
+@onready var _orc_collider = $CollisionShape2D
+@onready var _animation_player =$AnimationPlayer
 
 var _camera:PlayerCamera
 
@@ -34,7 +34,7 @@ func _ready():
 	_current_state = PlayerStates.NORMAL
 	_current_visual_state = VisualStates.FACING_RIGHT
 # warning-ignore:return_value_discarded
-	Global.connect("PlayerHurt", self, "_on_player_hurt")
+	Global.connect("PlayerHurt", _on_player_hurt.bind())
 
 func do_player_walkon():
 	_current_state = PlayerStates.STUN_LOCKED
@@ -77,14 +77,9 @@ func _handle_input(delta:float):
 				_handle_attack()			
 			elif Input.is_action_just_pressed("jump_attack"):
 				_handle_jump_attack()
-		PlayerStates.JUMP_ATTACKING:
-			continue
 		PlayerStates.ATTACKING:
-			yield(_animation_player, "animation_finished")
+			await _animation_player.animation_finished()
 			_current_state=PlayerStates.NORMAL
-			continue
-		PlayerStates.STUN_LOCKED:
-			continue
 			
 func _flip_player():
 	_current_visual_state = !_current_visual_state

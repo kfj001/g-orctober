@@ -6,13 +6,13 @@ and fired off from here. Events such as pausing, kickoff of a new game, pausing
 and gameplay lifecycle events live in this global file.
 """
 
-onready var _player_spawner:PlayerSpawner = get_node("/root").find_node("PlayerSpawner", true, false)
+@onready var _player_spawner:PlayerSpawner =$PlayerSpawner
 
-export var player_health:int setget set_player_health
-export var max_player_health:int = 100
-export var player_score:int = 0 setget set_player_score
+@export var player_health:int :set=set_player_health
+@export var max_player_health:int = 100
+@export var player_score:int = 0 :set=set_player_score
 
-export var player_lives:int setget set_player_lives
+@export var player_lives:int :set=set_player_lives
 var _player_ref:Player
 var _playing:bool
 
@@ -24,9 +24,6 @@ signal LivesChanged
 signal GameStarted
 signal GameEnded
 
-func _ready():
-	pause_mode = Node.PAUSE_MODE_PROCESS
-	
 func do_newgame_init():
 	self.player_score = 0
 	self.player_lives = 2
@@ -42,7 +39,7 @@ func do_newplayer_init():
 	_player_ref = _player_spawner.spawn_player()
 	if _player_ref != null:
 		# warning-ignore:return_value_discarded
-		_player_ref.connect("tree_exited", self, "_on_spawn_new_player_for_life")
+		_player_ref.connect("tree_exited", _on_spawn_new_player_for_life.bind())
 		
 func _on_spawn_new_player_for_life():
 	_player_ref = null
@@ -51,13 +48,11 @@ func _on_spawn_new_player_for_life():
 		do_newplayer_init()
 
 func _unhandled_input(event:InputEvent):
-	get_tree().set_input_as_handled()
-	
-	if event.is_action_pressed("full_screen") and !OS.window_fullscreen:
-		OS.window_fullscreen = true
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	elif event.is_action_pressed("full_screen") and OS.window_fullscreen:
-		OS.window_fullscreen = false
+	if event.is_action_pressed("full_screen") and DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	elif event.is_action_pressed("full_screen") and DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	elif event.is_action_pressed("exit"):
 		_quit_game()
@@ -72,7 +67,7 @@ func _unhandled_input(event:InputEvent):
 
 func _quit_game():
 	if _player_ref != null:
-		_player_ref.disconnect("tree_exited", self, "_on_spawn_new_player_for_life")
+		_player_ref.disconnect("tree_exited", _on_spawn_new_player_for_life.bind())
 	get_tree().quit(0)
 
 func set_player_health(value:int):

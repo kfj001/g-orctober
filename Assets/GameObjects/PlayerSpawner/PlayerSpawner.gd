@@ -11,18 +11,18 @@ when the player strays too far to the left (and risks getting killed)
 """
 class_name PlayerSpawner
 
-var _root_node:YSort
+var _root_node:Node2D
 
 """
 A reference to the player to spawn when the user starts a new game, or the 
 existing player dies.
 """
-export (PackedScene) var player:PackedScene
+@export var player:PackedScene
 """
 A reference to the gnome spawner. This will be attached to the player
 and started once the game is begun.
 """
-export (PackedScene) var gnome_spawner:PackedScene
+@export var gnome_spawner:PackedScene
 
 """
 Instantiates a new player and gnome spawner and begins their animation
@@ -41,7 +41,7 @@ func spawn_player()->Player:
 	player_obj.scale = Vector2(.6,.6)
 	player_obj.position = new_pos
 # warning-ignore:return_value_discarded
-	player_obj.connect("TooLeft", keep_moving_control, "show")
+	player_obj.connect("TooLeft", keep_moving_control._do_display.bind())
 	_root_node.add_child(player_obj)
 	player_obj.add_child(gnome_spawner_instance)
 	gnome_spawner_instance.position = Vector2(2000, 100)

@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkpcnv3as8jqn"]
+
+[ext_resource type="Script" path="res://src/RightMover.gd" id="1_fr0db"]
+[ext_resource type="PackedScene" path="res://Assets/GameObjects/PlayerSpawner/PlayerSpawner.tscn" id="2_e2lb6"]
+[ext_resource type="PackedScene" path="res://Assets/GameObjects/Player/Player.tscn" id="3_5ckv8"]
+[ext_resource type="PackedScene" path="res://Assets/GameObjects/GnomeMaker/GnomeMaker.tscn" id="4_t36st"]
+[ext_resource type="PackedScene" path="res://Assets/GameObjects/PlayerCamera.tscn" id="5_ve7je"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(2000, 20)
+
+[node name="RightMover" type="Node2D"]
+position = Vector2(1917.53, 0)
+script = ExtResource("1_fr0db")
+move_rate = 40
+
+[node name="PlayerSpawner" parent="." instance=ExtResource("2_e2lb6")]
+position = Vector2(-1351.55, 898.077)
+player = ExtResource("3_5ckv8")
+gnome_spawner = ExtResource("4_t36st")
+
+[node name="PlayerCamera" parent="." instance=ExtResource("5_ve7je")]
+position = Vector2(-1080, 733.106)
+limit_bottom = 1080
+
+[node name="Area2d" type="Area2D" parent="PlayerCamera"]
+position = Vector2(-996, 0)
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCamera/Area2d"]
+rotation = 1.5708
+shape = SubResource("1")
+one_way_collision = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="body_entered" from="PlayerCamera/Area2d" to="." method="_on_Area2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
