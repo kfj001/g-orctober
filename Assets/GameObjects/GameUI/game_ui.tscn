@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv83fyxqpc3hb"]
+
+[ext_resource type="PackedScene" path="res://Assets/GameObjects/PlayerUI/PlayerUI.tscn" id="1_vy3g5"]
+[ext_resource type="PackedScene" path="res://Assets/GameObjects/PlayerUI/TouchControls/TouchControls.tscn" id="2_jl7ve"]
+[ext_resource type="PackedScene" path="res://Assets/GameObjects/GetMoving/GetMoving.tscn" id="3_jmmri"]
+
+[node name="GameUI" type="GridContainer"]
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="PlayerUI" parent="." instance=ExtResource("1_vy3g5")]
+layout_mode = 2
+
+[node name="TouchControls" parent="." instance=ExtResource("2_jl7ve")]
+layout_mode = 2
+
+[node name="GetMoving" parent="." instance=ExtResource("3_jmmri")]
+layout_mode = 2

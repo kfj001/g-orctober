@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bc0rma4w5eequ"]
+[gd_scene load_steps=4 format=3 uid="uid://bc0rma4w5eequ"]
 
 [ext_resource type="PackedScene" uid="uid://byesmbjerpftp" path="res://Assets/GameObjects/ParallaxBackground.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://Assets/GameObjects/PlayerUI/PlayerUI.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://Assets/GameObjects/PlayerUI/TouchControls/TouchControls.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://bv83fyxqpc3hb" path="res://Assets/GameObjects/GameUI/game_ui.tscn" id="2_5pjqq"]
 [ext_resource type="PackedScene" uid="uid://ceqh217uhy2bl" path="res://Assets/GameObjects/SplashScreen/Splashscreen.tscn" id="9"]
-[ext_resource type="PackedScene" path="res://Assets/GameObjects/GetMoving/GetMoving.tscn" id="10"]
 
 [node name="stage_tests" type="Node2D"]
 
@@ -12,20 +10,7 @@
 scale = Vector2(0.667, 0.667)
 transform = Transform2D(0.667, 0, 0, 0.667, 0, 0)
 
-[node name="PlayUI" type="GridContainer" parent="."]
-visible = false
-custom_minimum_size = Vector2(1280, 720)
-offset_right = 1280.0
-offset_bottom = 720.0
-
-[node name="PlayerUI" parent="PlayUI" instance=ExtResource("5")]
-layout_mode = 2
-
-[node name="TouchControls" parent="PlayUI" instance=ExtResource("6")]
-layout_mode = 2
-
-[node name="GetMoving" parent="PlayUI" instance=ExtResource("10")]
-layout_mode = 2
+[node name="GameUI" parent="." instance=ExtResource("2_5pjqq")]
 
 [node name="SplashContainer" type="CenterContainer" parent="."]
 offset_right = 1280.0
