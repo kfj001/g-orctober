@@ -1,4 +1,4 @@
-extends TextureRect
+extends Control
 
 """
 Visual indickator element, reminding the user to "continue moving" to the right.

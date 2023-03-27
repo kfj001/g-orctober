@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://Assets/GameObjects/PlayerUI/PlayerUI.tscn" id="1_vy3g5"]
 [ext_resource type="PackedScene" uid="uid://bpllyt67sb11y" path="res://Assets/GameObjects/PlayerUI/TouchControls/TouchControls.tscn" id="2_jl7ve"]
-[ext_resource type="PackedScene" path="res://Assets/GameObjects/GetMoving/GetMoving.tscn" id="3_jmmri"]
+[ext_resource type="PackedScene" uid="uid://c16yrhfywyo8k" path="res://Assets/GameObjects/GetMoving/GetMoving.tscn" id="3_jmmri"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -26,7 +26,14 @@ grow_vertical = 2
 scale = Vector2(0.219, 0.219)
 
 [node name="GetMoving" parent="." instance=ExtResource("3_jmmri")]
-layout_mode = 2
-offset_top = 3256.0
-offset_right = 2148.0
-offset_bottom = 3256.0
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 294.0
+offset_top = 221.0
+offset_right = 294.0
+offset_bottom = 221.0
+scale = Vector2(0.434, 0.434)
