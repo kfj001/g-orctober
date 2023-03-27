@@ -1,19 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpllyt67sb11y"]
+[gd_scene load_steps=9 format=3 uid="uid://bpllyt67sb11y"]
 
-[ext_resource type="Script" path="res://Assets/GameObjects/PlayerUI/TouchControls/TouchControls.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://d2pua1fpwiqcj" path="res://Assets/GameObjects/PlayerUI/mace_button.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://tr7bntuel554" path="res://Assets/GameObjects/Joystick/joystick.tscn" id="4"]
 [ext_resource type="Texture2D" uid="uid://bcv73ibm1s15f" path="res://Assets/GameObjects/PlayerUI/TouchControls/jump_button.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://f1elu4wb8p4m" path="res://Assets/GameObjects/PlayerUI/pause_button.png" id="6"]
 
-[node name="TouchControls" type="HBoxContainer"]
-clip_contents = true
-offset_right = 1124.0
+[sub_resource type="InputEventAction" id="InputEventAction_tot2h"]
+action = &"attack"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_y8xpd"]
+events = [SubResource("InputEventAction_tot2h")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_lbj7w"]
+action = &"jump_attack"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_jf1uo"]
+events = [SubResource("InputEventAction_lbj7w")]
+
+[node name="GridContainer" type="GridContainer"]
+offset_right = 2152.0
 offset_bottom = 3248.0
-script = ExtResource("1")
+scale = Vector2(0.22, 0.22)
+columns = 3
 
 [node name="joystick_outer_ring" parent="." instance=ExtResource("4")]
 layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="RightStuff" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -22,17 +40,26 @@ size_flags_vertical = 4
 
 [node name="MaceButton" type="TextureButton" parent="RightStuff"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 action_mode = 0
+shortcut = SubResource("Shortcut_y8xpd")
 texture_normal = ExtResource("3")
+stretch_mode = 5
 
 [node name="JumpButton" type="TextureButton" parent="RightStuff"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 action_mode = 0
+shortcut = SubResource("Shortcut_jf1uo")
 texture_normal = ExtResource("5")
+stretch_mode = 5
 
 [node name="PauseButton" type="TextureButton" parent="RightStuff"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 action_mode = 0
 texture_normal = ExtResource("6")
-
-[connection signal="pressed" from="RightStuff/MaceButton" to="." method="_on_AttackButton_pressed"]
+stretch_mode = 5

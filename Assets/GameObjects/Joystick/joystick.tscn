@@ -4,22 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cjjidfiqn0tqj" path="res://Assets/GameObjects/Joystick/joystick_nub.png" id="2"]
 [ext_resource type="Script" path="res://Assets/GameObjects/Joystick/joystick.gd" id="3"]
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -512.0
-offset_top = -512.0
-offset_right = 512.0
-offset_bottom = 512.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="joystick_outer_ring" type="TextureButton" parent="."]
-layout_mode = 1
+[node name="CenterContainer" type="CenterContainer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -33,26 +18,23 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="joystick_outer_ring" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("1")
 texture_pressed = ExtResource("1")
 texture_hover = ExtResource("1")
+texture_disabled = ExtResource("1")
 texture_focused = ExtResource("1")
 script = ExtResource("3")
 
 [node name="joystick_nub" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -256.0
-offset_top = -256.0
-offset_right = 256.0
-offset_bottom = 256.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 2
 texture = ExtResource("2")
 expand_mode = 1
+stretch_mode = 5
 
 [connection signal="gui_input" from="joystick_outer_ring" to="joystick_outer_ring" method="_on_gui_input"]
