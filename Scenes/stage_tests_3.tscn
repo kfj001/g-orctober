@@ -1,20 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc0rma4w5eequ"]
+[gd_scene load_steps=7 format=3 uid="uid://bc0rma4w5eequ"]
 
 [ext_resource type="PackedScene" uid="uid://byesmbjerpftp" path="res://Assets/GameObjects/ParallaxBackground.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bv83fyxqpc3hb" path="res://Assets/GameObjects/GameUI/game_ui.tscn" id="2_5pjqq"]
+[ext_resource type="Script" path="res://src/RightMover.gd" id="4_o0p7p"]
+[ext_resource type="Script" path="res://Assets/GameObjects/PlayerCamera.gd" id="5_nkrxf"]
+[ext_resource type="Script" path="res://Assets/GameObjects/PlayerSpawner/PlayerSpawner.gd" id="6_ntdrg"]
 [ext_resource type="PackedScene" uid="uid://ceqh217uhy2bl" path="res://Assets/GameObjects/SplashScreen/Splashscreen.tscn" id="9"]
 
 [node name="stage_tests" type="Node2D"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1")]
-scale = Vector2(0.667, 0.667)
-transform = Transform2D(0.667, 0, 0, 0.667, 0, 0)
+scale = Vector2(0.687, 0.687)
+transform = Transform2D(0.687, 0, 0, 0.687, 0, 0)
 
-[node name="GameUI" parent="." instance=ExtResource("2_5pjqq")]
+[node name="RightMover" type="Node2D" parent="."]
+position = Vector2(649, 371)
+script = ExtResource("4_o0p7p")
+move_rate = 20
 
-[node name="SplashContainer" type="CenterContainer" parent="."]
-offset_right = 1280.0
-offset_bottom = 720.0
+[node name="PlayerCamera" type="Camera2D" parent="RightMover"]
+script = ExtResource("5_nkrxf")
 
-[node name="splashscreen" parent="SplashContainer" instance=ExtResource("9")]
+[node name="GameUI" parent="RightMover/PlayerCamera" instance=ExtResource("2_5pjqq")]
+offset_left = -636.0
+offset_top = -357.0
+offset_right = 644.0
+offset_bottom = 363.0
+
+[node name="SplashContainer" type="CenterContainer" parent="RightMover/PlayerCamera"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="splashscreen" parent="RightMover/PlayerCamera/SplashContainer" instance=ExtResource("9")]
 layout_mode = 2
+
+[node name="PlayerSpawner" type="Node2D" parent="RightMover/PlayerCamera"]
+position = Vector2(-733, 2.08165e-12)
+script = ExtResource("6_ntdrg")

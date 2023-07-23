@@ -39,6 +39,8 @@ parameter_name = "hurt_effect_blend"
 
 [resource]
 code = "shader_type canvas_item;
+render_mode blend_mix;
+
 uniform vec4 pallette_swap_color : source_color;
 uniform float time;
 uniform float hurt_effect_blend;

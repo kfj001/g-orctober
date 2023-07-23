@@ -7,7 +7,7 @@ This object is intended to keep the player moving to the right, or die.
 """
 class_name RightMover
 
-export(int, 20, 150) var move_rate:int=200
+@export_range(20, 150) var move_rate:int=200
 
 func _process(delta):
 	position.x += delta*move_rate

@@ -9,22 +9,23 @@ The authoratitive location for the data this UI element displays is in
 the Global scope (See global_input_handler.gd)
 """
 
-onready var _progress_bar = $TextureRect/GridContainer/hpProgress
-onready var _score = $TextureRect/GridContainer/scoreLabel2
-onready var _lives = $TextureRect/Face/LivesLabel
+@onready var _progress_bar = $hpProgress
+@onready var _score = $GridContainer/scoreLabel2
+@onready var _lives = $LivesLabel
 
 func _ready():
+	visible = false
 	_progress_bar.value = Global.player_health
+	Global.connect("HealthChanged", _on_player_health_changed.bind())
+	Global.connect("ScoreChange", _on_player_score_changed.bind())
 # warning-ignore:return_value_discarded
-	Global.connect("HealthChanged", self, "_on_player_health_changed")
+	Global.connect("PauseSounded", $PauseSoundPlayer.play.bind())
 # warning-ignore:return_value_discarded
-	Global.connect("ScoreChange", self, "_on_player_score_changed")
-# warning-ignore:return_value_discarded
-	Global.connect("PauseSounded", $PauseSoundPlayer, "play")
-# warning-ignore:return_value_discarded
-	Global.connect("LivesChanged", self, "_on_player_lives_changed")
+	Global.connect("LivesChanged", _on_player_lives_changed.bind())
 	_set_lives_to(Global.player_lives)
 	_score.text = str(Global.player_score)
+	Global.connect("GameStarted", _on_game_started.bind())
+	
 	
 
 """
@@ -51,3 +52,9 @@ The numeric value provided will be reformatted on-screen.
 """
 func _set_lives_to(value:int):
 	_lives.text = "x%s" % value
+
+func _on_game_started():
+	self.visible = true
+
+func _on_game_stopped():
+	self.visible = false

@@ -1,101 +1,90 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=3 uid="uid://bjf7r2ux5oo2x"]
 
-[ext_resource path="res://Assets/GameObjects/PlayerUI/hpProgress.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/GameObjects/PlayerUI/orc_thin_face.png" type="Texture" id=2]
-[ext_resource path="res://Assets/GameObjects/PlayerUI/Theme.tres" type="Theme" id=3]
-[ext_resource path="res://Assets/GameObjects/PlayerUI/PlayerUI.gd" type="Script" id=4]
-[ext_resource path="res://Assets/GameObjects/PlayerUI/gameUI_back.png" type="Texture" id=5]
-[ext_resource path="res://Assets/GameObjects/PlayerUI/pause.wav" type="AudioStream" id=6]
+[ext_resource type="PackedScene" path="res://Assets/GameObjects/PlayerUI/hpProgress.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://208aixfqprox" path="res://Assets/GameObjects/PlayerUI/orc_thin_face.png" id="2"]
+[ext_resource type="Theme" uid="uid://ul1ip4erexlw" path="res://Assets/GameObjects/PlayerUI/Theme.tres" id="3"]
+[ext_resource type="Script" path="res://Assets/GameObjects/PlayerUI/PlayerUI.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://ccsenscjg6rxi" path="res://Assets/GameObjects/PlayerUI/gameUI_back.png" id="5"]
+[ext_resource type="AudioStream" uid="uid://b0mnsmy5pvmrl" path="res://Assets/GameObjects/PlayerUI/pause.wav" id="6"]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 80.0
+[sub_resource type="SystemFont" id="SystemFont_mxgqy"]
+hinting = 2
+
+[sub_resource type="Theme" id="Theme_ibecu"]
+default_font = SubResource("SystemFont_mxgqy")
+
+[sub_resource type="SystemFont" id="SystemFont_gayf0"]
+font_weight = 600
 
 [node name="PlayerUI" type="Control"]
-pause_mode = 2
-theme = ExtResource( 3 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("3")
+script = ExtResource("4")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 717.0
-margin_bottom = 203.0
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Face" type="TextureRect" parent="TextureRect"]
-margin_left = 20.0
-margin_top = 25.6123
-margin_right = 276.0
-margin_bottom = 281.612
-rect_min_size = Vector2( 256, 256 )
-rect_scale = Vector2( 0.580784, 0.580784 )
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="LivesLabel" type="Label" parent="TextureRect/Face"]
-margin_left = 181.874
-margin_top = 212.001
-margin_right = 325.874
-margin_bottom = 287.001
-text = "x%d"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="TextureRect"]
-position = Vector2( 15, 15 )
-shape = SubResource( 1 )
-action = "new_game"
-
-[node name="GridContainer" type="GridContainer" parent="TextureRect"]
-margin_left = 174.938
-margin_top = 21.3471
-margin_right = 955.938
-margin_bottom = 167.347
-rect_scale = Vector2( 0.688568, 0.688568 )
-size_flags_vertical = 0
-columns = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="hplabel" type="Label" parent="TextureRect/GridContainer"]
-margin_right = 177.0
-margin_bottom = 71.0
-text = "HP:"
-align = 2
-valign = 1
-
-[node name="hpProgress" parent="TextureRect/GridContainer" instance=ExtResource( 1 )]
-margin_left = 181.0
-margin_right = 781.0
-margin_bottom = 71.0
-
-[node name="scoreLabel" type="Label" parent="TextureRect/GridContainer"]
-margin_top = 75.0
-margin_right = 177.0
-margin_bottom = 146.0
-text = "Score:"
-align = 2
-valign = 1
-
-[node name="scoreLabel2" type="Label" parent="TextureRect/GridContainer"]
-margin_left = 181.0
-margin_top = 75.0
-margin_right = 781.0
-margin_bottom = 146.0
-text = "1,234,567"
-valign = 1
-max_lines_visible = 1
+layout_mode = 0
+offset_right = 818.0
+offset_bottom = 210.0
+texture = ExtResource("5")
+expand_mode = 1
 
 [node name="PauseSoundPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource("6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 23.0
+offset_right = 745.0
+offset_bottom = 87.0
+size_flags_vertical = 0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+offset_left = 240.0
+offset_top = 113.0
+offset_right = 697.0
+offset_bottom = 187.0
+columns = 2
+
+[node name="scoreLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 60
+text = "Score:"
+
+[node name="scoreLabel2" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 60
+text = "1,234,567"
+max_lines_visible = 1
+
+[node name="Face" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 21.0
+offset_top = 17.0
+offset_right = 218.0
+offset_bottom = 196.0
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="hpProgress" parent="." instance=ExtResource("1")]
+layout_mode = 2
+offset_left = 198.0
+offset_top = 44.0
+offset_right = 798.0
+offset_bottom = 108.0
+
+[node name="LivesLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 158.0
+offset_right = 217.0
+offset_bottom = 184.0
+theme = SubResource("Theme_ibecu")
+theme_override_fonts/font = SubResource("SystemFont_gayf0")
+theme_override_font_sizes/font_size = 25
+text = "x%d"
