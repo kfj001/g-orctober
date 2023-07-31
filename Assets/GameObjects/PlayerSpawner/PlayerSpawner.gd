@@ -24,6 +24,9 @@ and started once the game is begun.
 """
 @export var gnome_spawner:PackedScene
 
+func _ready():
+	Global.connect("GameStarted", spawn_player.bind())
+
 """
 Instantiates a new player and gnome spawner and begins their animation
 cycle on screen. Called when a new game is started.
